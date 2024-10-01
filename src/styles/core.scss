@@ -1,0 +1,64 @@
+@import "variables";
+
+.text-center {
+  text-align: center !important;
+}
+.hero{
+  padding-top: $spacing-large;
+  padding-bottom: $spacing-large;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.heading-logo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+h1.heading{
+  font-size: 35px !important;
+  color: $primary-color;
+  text-align: center;
+}
+.features {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  .feature {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: $spacing-small $spacing-medium;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: $border-radius-small;
+    h4 {
+      font-size: 17px;
+      color: $primary-color !important;
+    }
+    svg{
+      color: $primary-color !important;
+    }
+  }
+}
+.callout{
+  margin-top: $spacing-large;
+  margin-bottom: $spacing-large;
+  background-color: rgba(251,146,60,.2);
+  border: 1px solid rgba(251,146,60, 1);
+  padding: 20px;
+  border-radius: $border-radius-large;
+  span{
+    display: flex;
+    gap: 10px;
+  }
+}
+
+p.community{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-top: 20px;
+}

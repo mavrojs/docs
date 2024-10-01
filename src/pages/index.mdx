@@ -1,0 +1,102 @@
+---
+title: Mavro - A web framework's — where simplicity meets scalability.
+---
+import { Bleed } from 'nextra-theme-docs'
+import Features from '@/components/features'
+import Callout from '@/components/callout'
+
+<Bleed>
+  <div className="hero">
+    <div className="heading-logo"><img src="/logo-w.svg" width="175px" /></div>
+    <h1 className="heading text-center">A web framework's — where simplicity meets scalability.</h1>
+    <Features/>
+  </div>
+</Bleed>
+
+**mavro** is a minimal, fast, and scalable Node.js framework built on Koa.js and powered by TypeScript. It simplifies backend development by offering a complete MVC architecture, a powerful CLI for generating APIs, and built-in features like authentication, caching, and mailing.
+
+With mavro, you can quickly build robust and production-ready APIs while minimizing repetitive tasks and focusing on what truly matters: building high-quality applications.
+
+<Callout emoji="🚨">
+  <strong>Disclaimer: </strong>Currently <strong>mavro</strong> in an unstable state and undergoing active development. Frequent breaking changes are expected as new features are added, and improvements are made. It is not yet ready for production use. We appreciate your understanding and contributions as we work towards a stable release.
+</Callout>
+
+## Overview
+
+**mavro** combines the best of modern JavaScript and TypeScript development with minimalistic principles inspired by Koa.js. Its opinionated approach simplifies complex decisions and repetitive tasks, allowing developers to focus on delivering high-quality APIs with minimal friction. Every feature is designed with scalability, security, and maintainability in mind, ensuring that developers can ship production-grade applications faster with less overhead.
+
+We recommend starting a new app using `mavro/cli`, which sets up everything automatically for you. To create a project, run:
+
+```bash
+ npm i -g mavro/cli@latest
+```
+
+```bash
+ npm mavro init
+```
+
+On installation, you'll see the following prompts:
+
+```bash
+What is your project named? my-app
+Would you like to use TypeScript? No / Yes
+Would you like to use postgres? No / Yes
+Would you like your code inside a `src/` directory? No / Yes
+Would you like to customize the import alias (`@/*`)? No / Yes
+```
+
+```bash
+cd my-app
+npm run dev
+```
+
+Or want you use by own architecture you can:
+
+```bash
+ npm i mavro@latest
+```
+
+```jsx
+import { app } from 'mavro';
+
+const exampleMiddleware = (req, res, next) =>{
+  console.warn("We are passing from example middleware");
+  next();
+}
+
+app.get("/", function(req, res)=>{
+  res.json({
+    message: "Mavro saying hello world! 👋"
+  })
+})
+
+app.use(exampleMiddleware)
+
+app.listen(3000, function(){
+  console.warn("Server is listen to http://localhost:3000")
+})
+```
+
+## Community [#community]
+
+<p className="community">
+  <a href="https://github.com/mavrojs/mavro/blob/main/LICENSE">
+    <img src="https://img.shields.io/badge/status-under_development-red?style=flat-square" alt="GitHub license" />
+  </a>
+  <a href="https://www.npmjs.com/package/mavro">
+    <img src="https://img.shields.io/npm/v/mavro.svg?style=flat" alt="npm version" />
+  </a>
+  <a href="https://github.com/mavrojs/mavro/actions/workflows/runtime_build_and_test.yml">
+    <img src="https://github.com/mavrojs/mavro/actions/workflows/runtime_build_and_test.yml/badge.svg" alt="(Runtime) Build and Test" />
+  </a>
+  <a href="https://github.com/mavrojs/mavro/actions/workflows/compiler_typescript.yml">
+    <img src="https://github.com/mavrojs/mavro/actions/workflows/compiler_typescript.yml/badge.svg?branch=main" alt="(Compiler) TypeScript" />
+  </a>
+  <a href="https://github.com/mavrojs/mavro/blob/main/CONTRIBUTING.md">
+    <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs Welcome" />
+  </a>
+</p>
+
+<strong>mavro</strong> is created by [Othmane N. 👋](https://github.com/iietmoon) and belongs to all contributers and community.
+
+Feel free to join the [discussions on GitHub](https://github.com/mavrojs/mavro/discussions)!

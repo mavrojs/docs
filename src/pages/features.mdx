@@ -1,0 +1,188 @@
+## Features
+
+With minimal setup and a few simple commands, you can streamline your development process and enjoy all these powerful features out-of-the-box:
+
+### **Minimalistic, fast, and scalable framework**  
+Mavro is designed for simplicity and speed, making it perfect for building modern APIs. Whether you're starting a small project or building large-scale enterprise applications, Mavro adapts seamlessly.  
+
+*Example:*  
+In just a few lines of code, you can create a complete REST API without worrying about unnecessary complexity:
+
+```ts
+import { Controller, Get } from 'mavro';
+
+@Controller('/users')
+class UserController {
+  @Get('/')
+  getAllUsers() {
+    return UserService.findAll();
+  }
+}
+```
+
+### **TypeScript-first**  
+Mavro is built with TypeScript at its core, providing strong typing, better IDE support, and early bug detection. This ensures safer and more maintainable code, especially for large projects.
+
+*Example:*  
+All components, such as controllers, services, and models, are fully typed, offering autocomplete and static analysis benefits:
+
+```ts
+import { Service } from 'mavro';
+
+@Service()
+class UserService {
+  findUserById(id: string): User | null {
+    // TypeScript enforces types here
+    return UserModel.findById(id);
+  }
+}
+```
+
+### **Automatic API scaffolding**  
+With one simple command, you can automatically generate controllers, services, routes, and models. This eliminates the need for repetitive setup tasks and lets you focus on the logic.
+
+*Example:*  
+Generate a complete CRUD API for `users` with one command:
+
+```bash
+npm create api:users
+```
+
+This generates all the necessary files for user CRUD operations (controller, model, service, and routes).
+
+### **MVC architecture**  
+Mavro follows the Model-View-Controller pattern, making it easy to structure your application. This separation of concerns ensures that your business logic, API routes, and data models are cleanly organized and scalable.
+
+*Example:*  
+Your application could have a structure like this:
+
+```
+src/
+ ├── controllers/
+ ├── models/
+ ├── services/
+ ├── routes/
+ └── middlewares/
+```
+
+This makes it simple to manage and maintain large-scale applications.
+
+### **Middleware support**  
+Create and integrate middleware for handling authentication, logging, error handling, validation, and more. Middleware can be applied globally or at the route level for fine-grained control.
+
+*Example:*  
+Here’s how to add authentication middleware to a specific route:
+
+```ts
+import { Middleware, Controller, Post } from 'mavro';
+import { AuthMiddleware } from './middlewares/auth';
+
+@Controller('/posts')
+class PostController {
+  @Post('/')
+  @Middleware(AuthMiddleware)
+  createPost(req, res) {
+    return PostService.create(req.body);
+  }
+}
+```
+
+### **Modular and flexible**  
+Mavro is designed with modularity in mind, allowing you to customize or replace individual components. You can swap out default components (like the router, ORM, etc.) to match your project’s needs.
+
+*Example:*  
+You can easily extend Mavro with custom logic, like adding a new response handler:
+
+```ts
+import { Middleware } from 'mavro';
+
+export const customResponseHandler: Middleware = (req, res, next) => {
+  res.send({ message: "Custom response format!" });
+  next();
+};
+```
+
+### **Built-in caching and rate-limiting**  
+Improve performance by caching frequently accessed data and controlling the rate of requests with built-in caching and rate-limiting mechanisms.
+
+*Example:*  
+You can implement caching with a simple decorator to cache API responses for a specified duration:
+
+```ts
+import { Cache } from 'mavro';
+
+@Controller('/data')
+class DataController {
+  @Get('/')
+  @Cache(60)  // Cache this endpoint for 60 seconds
+  fetchData() {
+    return DataService.getData();
+  }
+}
+```
+
+### **Database ORM integration**  
+Mavro integrates seamlessly with both SQL and NoSQL databases, offering an intuitive ORM for database interactions. It supports complex transactions, schema migrations, and model validation.
+
+*Example:*  
+Defining a SQL-based `User` model:
+
+```ts
+import { Model, Column } from 'mavro';
+
+@Model('users')
+class UserModel {
+  @Column('id', { primary: true })
+  id: string;
+
+  @Column('name')
+  name: string;
+  
+  @Column('email', { unique: true })
+  email: string;
+}
+```
+
+This model can easily interact with the database to perform CRUD operations:
+
+```ts
+UserModel.create({ id: '1', name: 'John', email: 'john@example.com' });
+```
+
+### **Comprehensive error handling**  
+Mavro offers unified and detailed error management, making debugging more straightforward. You can define global error handlers, and errors are logged with clear messages and stack traces for easier identification.
+
+*Example:*  
+Implement a custom error handler for all uncaught errors:
+
+```ts
+import { Middleware } from 'mavro';
+
+export const errorHandler: Middleware = (err, req, res, next) => {
+  console.error('Error occurred:', err);
+  res.status(500).send({ error: 'Internal Server Error' });
+};
+```
+
+### **Other Features**
+- **Real-time WebSocket support:**  
+  Easily integrate real-time communication in your app using WebSockets for live updates, chat, notifications, etc.
+
+- **Notifications support:**  
+  Mavro makes it easy to integrate multiple notification channels like email, SMS, and push notifications using a unified notification system.
+
+- **RESTful and GraphQL API support:**  
+  You can build both RESTful and GraphQL APIs with Mavro, giving you the flexibility to choose the right protocol for your project.
+
+- **Testing tools:**  
+  Write unit, integration, and functional tests easily with Mocha and Chai, fully compatible with TypeScript.
+
+- **Hot-reload during development:**  
+  Enable hot-reload to see code changes instantly in your development environment without restarting the server.
+
+- **Error tracking and recovery:**  
+  Mavro includes robust error tracking with retries and intelligent recovery mechanisms to ensure your application stays stable in production environments.
+
+---
+
+With Mavro, you get the speed, flexibility, and features necessary to build modern web applications with minimal overhead. The framework is built for developers, by developers, to simplify your workflow and reduce development time without sacrificing performance or scalability.

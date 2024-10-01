@@ -1,0 +1,110 @@
+/* ==========================================
+   This file contains global styling rules that are applied throughout the application.
+   ==========================================
+
+   Table of Contents:
+   1. Breakpoints
+   2. Colors
+   3. Fonts
+   4. Text sizes
+   5. Font weight
+   6. Spacing
+   7. Borders
+   8. Shadows
+
+   Author: Othmane N. | Senior Developer
+   Github: https://github.com/iietmoon
+   ==========================================
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+/* 1. Breakpoints */
+$breakpoint-mobile: 768px;
+$breakpoint-tablet: 992px;
+$breakpoint-large: 1200px;
+
+/* 2. Colors */
+$primary-color: #ffffff;
+
+$secondary-color: #bcbcbc;
+
+$accent-color: #FFBF4E;
+$accent-color-200: #FFE9BE ;
+
+
+$heading-color: #030305;
+$text-color: #848C88;
+$gray-color:  #bebebe;
+$light-color: #F5F5F5;
+$white-color: #FFFFFF;
+
+$danger-color: #E30023;
+$success-color: #00C38F;
+$info-color: #00D5FF;
+
+
+
+/* 3. Fonts */
+$main-font: 'Inter', sans-serif;
+$heading-font: 'Inter', sans-serif;
+
+/* 4. Text sizes */
+$small-text-size: 13px;
+$medium-text-size: 15px;
+$large-text-size: 17px;
+$heading-text-size: 22px;
+$mlarge-text-size: 27px;
+$mdlarge-text-size: 30px;
+$xlarge-text-size: 42px;
+$xxlarge-text-size: 67px;
+
+/* 5. Font weight */
+$regular-weight: 400;
+$bold-weight: 700;
+
+/* 6. Spaceing */
+$spacing-unit: 8px;
+$spacing-small: $spacing-unit;
+$spacing-medium: $spacing-unit * 2;
+$spacing-large: $spacing-unit * 3;
+
+/* 7. Borders */
+$border-thin: 1px;
+$border-medium: 2px;
+$border-thick: 3px;
+
+$border-color: $secondary-color;
+$border-primary: $primary-color $border-thin solid;
+$border-success: $success-color $border-thin solid;
+$border-danger: $danger-color $border-thin solid;
+
+$border-radius-small: 2px;
+$border-radius-large: 8px;
+
+/* 8. Shadows */
+$box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.1);
+$box-shadow-hover: 0px 8px 24px rgba(0, 0, 0, 0.2);
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $main-font !important;
+  font-weight: $bold-weight !important;
+  color: primary;
+}
+h1{
+    font-size: $mdlarge-text-size;
+}
+h2{
+    font-size: $mlarge-text-size;
+}
+h3{
+    font-size: $large-text-size;
+}
+h4, h5, h6{
+    font-size: $large-text-size;
+}
